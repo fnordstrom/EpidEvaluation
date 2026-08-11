@@ -14,8 +14,8 @@ $$
 
 The output factor (OF) is calculated as the mean of the output factors for two field sizes:
 
-1. Based on the jaw settings and the aperture
-2. Based on the aperture alone
+1. Based on the jaw settings
+2. Based on the aperture
 
 The equivalent depth-dependent wedge factor (EDWF) is calculated using the method proposed by Kupermann (2005) and the Golden STT tables.
 
