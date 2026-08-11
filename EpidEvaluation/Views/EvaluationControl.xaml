@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="EpidEvaluation.Views.EvaluationControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:local="clr-namespace:EpidEvaluation.Views" 
+             xmlns:viewmodels="clr-namespace:EpidEvaluation.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:PortalDoseEvaluationViewModel}"
+             mc:Ignorable="d"              
+             d:DesignWidth="200" d:DesignHeight="360" d:Background="{x:Static SystemColors.ControlBrush}" 
+             Width="200" Margin="2" BorderBrush="Black" BorderThickness="2" Background="{Binding Background}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Padding="0" HorizontalContentAlignment="Center" Foreground="Black" FontWeight="Bold" Content="{Binding BeamId}" d:Content="Beam XX"/>
+        <Label Grid.Row="1" Padding="0" HorizontalContentAlignment="Center" Foreground="Black" Content="{Binding BeamInfo}" d:Content="X MV"/>
+        <Grid Grid.Row="2" Margin="2,0,2,0">
+            <Image Name="image" Source="{Binding Bitmap}" Stretch="UniformToFill">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding ImageClickedCommand}" PassEventArgsToCommand="True"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="Loaded">
+                        <i:InvokeCommandAction Command="{Binding ImageSizeChangedCommand}" CommandParameter="{Binding ElementName=image}" PassEventArgsToCommand="True"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="SizeChanged">
+                        <i:InvokeCommandAction Command="{Binding ImageSizeChangedCommand}" CommandParameter="{Binding ElementName=image}" PassEventArgsToCommand="True"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Image>
+            <Canvas IsHitTestVisible="False">
+                <Ellipse Width="8" Height="8" Fill="Black" Stroke="White" StrokeThickness="1" Margin="-4,-4,0,0" IsHitTestVisible="False">
+                    <Ellipse.RenderTransform>
+                        <TranslateTransform X="{Binding CalculationPointImagePosition.X}" Y="{Binding CalculationPointImagePosition.Y}"/>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+            </Canvas>
+        </Grid>
+        <Label Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" IsHitTestVisible="False" Content="Invalid detector position" Foreground="Red" FontWeight="Bold" Visibility="{Binding InvalidDetectorPositionMessageVisibility}"/>
+        <Label Grid.Row="3" Padding="0" HorizontalContentAlignment="Center" Foreground="Black" Content="{Binding Name}" d:Content="MV XXX"/>
+        <Label Grid.Row="4" Padding="0" HorizontalContentAlignment="Center" Foreground="Black" Content="{Binding Date}" d:Content="yyyy-MM-dd HH:mm:ss"/>
+        <Label Grid.Row="6" Padding="0" HorizontalContentAlignment="Center" Foreground="Black" Content="{Binding Measured}" ContentStringFormat="Measured: {0:F1} CU" d:Content="100.0" MouseDown="Details_MouseDown"/>
+        <Label Grid.Row="7" Padding="0" HorizontalContentAlignment="Center" Foreground="Black" Content="{Binding Predicted}" ContentStringFormat="Predicted: {0:F1} CU" d:Content="100.0" MouseDown="Details_MouseDown"/>
+        <Label Grid.Row="8" Padding="0" HorizontalContentAlignment="Center" Foreground="Black" FontWeight="Bold" Content="{Binding Deviation}" ContentStringFormat="Deviation: {0:F1}%" d:Content="2.0" MouseDown="Details_MouseDown"/>
+    </Grid>
+</UserControl>

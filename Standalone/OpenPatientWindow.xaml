@@ -1,0 +1,50 @@
+﻿<Window x:Class="EpidEvaluationStandalone.OpenPatientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EpidEvaluationStandalone" 
+        xmlns:viewmodels="clr-namespace:EpidEvaluationStandalone.ViewModels"
+        mc:Ignorable="d"
+        Title="Evaluate EPID: Open patient..." Height="400" Width="700" Closing="Window_Closing" Icon="/EpidEvaluation.png">
+<Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+    
+        <Label Grid.Row ="0" Content="Patient ID: "/>
+        <TextBox Grid.Column="1" Margin="4" Text="{Binding PatientId, UpdateSourceTrigger=PropertyChanged}" >
+            <TextBox.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding SearchCommand}" />
+            </TextBox.InputBindings>
+        </TextBox>
+        <Button Grid.Row="0" Grid.Column="2" Margin="4" Content="Search" Command="{Binding SearchCommand}"/>
+
+        <Label Grid.Row="1" Content="Matching patients: "/>
+        <ListBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="4" ItemsSource="{Binding MatchingPatients}" SelectedItem="{Binding SelectedPatient}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding PatientId}" Margin="4,2"/>
+                        <TextBlock Grid.Column="1" Text="{Binding FirstName}" Margin="4,2"/>
+                        <TextBlock Grid.Column="2" Text="{Binding LastName}" Margin="4,2"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button Grid.Row="2" Grid.Column="2" Margin="4" Content="Open" Command="{Binding OpenCommand}" />
+    </Grid>
+</Window>

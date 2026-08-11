@@ -1,0 +1,50 @@
+﻿<Window x:Class="EpidEvaluation.Views.PredictionDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:local="clr-namespace:EpidEvaluation.Views"
+        xmlns:viewmodels="clr-namespace:EpidEvaluation.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:PredictionViewModel}"
+        mc:Ignorable="d"
+        d:DesignWidth="180" d:DesignHeight="380" 
+        Title="Prediction details" SizeToContent="WidthAndHeight" WindowStyle="ToolWindow" ResizeMode="NoResize" ShowInTaskbar="False">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" Padding="0" FontWeight="Bold" Content="{Binding BeamId}" d:Content="Beam XX"/>
+        <Label Grid.Row="2" Padding="0" Content="{Binding Energy}" ContentStringFormat="Energy: {0}" d:Content="6X"/>
+        <Label Grid.Row="3" Padding="0" Content="{Binding Wedge}" ContentStringFormat="Wedge: {0}" d:Content="EDW10-In"/>
+        <Label Grid.Row="4" Padding="0" Content="{Binding Meterset}" ContentStringFormat="Meterset: {0:F3} MU" d:Content="100"/>
+        <Label Grid.Row="6" Padding="0" Content="{Binding Collimator}" ContentStringFormat="Collimator: {0}" d:Content="10x10 cm"/>
+        <Label Grid.Row="7" Padding="0" Content="{Binding FieldSize}" ContentStringFormat="Field: {0}" d:Content="10x10 cm"/>
+        <Label Grid.Row="9" Padding="0" Content="{Binding EDWF}" ContentStringFormat="EDWF: {0:F3}" d:Content="1.000"/>
+        <Label Grid.Row="10" Padding="0" Content="{Binding Intensity}" ContentStringFormat="Intensity factor: {0:F3}" d:Content="1.000"/>
+        <Label Grid.Row="11" Padding="0" Content="{Binding OutputFactor}" ContentStringFormat="Output factor: {0:F3}" d:Content="1.000"/>
+        <Label Grid.Row="12" Padding="0" Content="{Binding OutputFactorCollimator}" ContentStringFormat="  (Collimator): {0:F3}" d:Content="1.000"/>
+        <Label Grid.Row="13" Padding="0" Content="{Binding OutputFactorField}" ContentStringFormat="  (Field): {0:F3}" d:Content="1.000"/>
+        <Label Grid.Row="15" Padding="0" Content="{Binding Measured}" ContentStringFormat="Measured: {0:F1} CU" d:Content="1.000"/>
+        <Label Grid.Row="16" Padding="0" Content="{Binding Predicted}" ContentStringFormat="Predicted: {0:F1} CU" d:Content="1.000"/>
+        <Label Grid.Row="17" Padding="0" FontWeight="Bold" Content="{Binding Deviation}" ContentStringFormat="Deviation: {0:F1}%" d:Content="2.0"/>
+    </Grid>
+</Window>
