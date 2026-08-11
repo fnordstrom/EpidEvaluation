@@ -16,8 +16,8 @@ namespace EpidEvaluationStandalone.ViewModels
 {
     public class OpenPatientViewModel : INotifyPropertyChanged
     {
-        private ESAPI.Application appESAPI;
-        private PD.Application appPD;
+        private readonly ESAPI.Application appESAPI;
+        private readonly PD.Application appPD;
         private string patientId = string.Empty;
         private PatientViewModel selectedPatient;        
 
