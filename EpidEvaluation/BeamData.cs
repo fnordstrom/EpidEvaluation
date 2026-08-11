@@ -27,13 +27,17 @@ namespace EpidEvaluation
             }
             else if(energy == 10)
             {
+                // Interpolated from Kupermann 2005
+                Lambda = 0.00637;
+                Mu = 0.0942;
+
                 GSTT = ReadTable("10X_GSTT"); // From Varian Enhanced Dyunamic Wedge Implementation Guide
                 OF = ReadTable("10X_OF"); // Reference Beam Data
                 Intensity = ReadTable("10X_Intensity"); // Reference Beam Data
             }
             else if (energy == 15)
             {
-                // From Interpolated from Kupermann 2005
+                // Interpolated from Kupermann 2005
                 Lambda = 0.0047;
                 Mu = 0.08338;
 
