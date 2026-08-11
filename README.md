@@ -1,4 +1,4 @@
-![Logo](https://git.vgregion.se/tsf/EpidEvaluation/-/raw/master/Standalone/EpidEvaluation.ico)
+![Logo](https://github.com/fnordstrom/EpidEvaluation/blob/master/EpidEvaluation.png)
 
 # Evaluation of integrated images for static fields
 
