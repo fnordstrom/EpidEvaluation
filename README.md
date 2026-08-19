@@ -17,7 +17,7 @@ The output factor (OF) is calculated as the mean of the output factors for two f
 1. Based on the jaw settings
 2. Based on the aperture
 
-The equivalent depth-dependent wedge factor (EDWF) is calculated using the method proposed by Kupermann (2005) and the Golden STT tables.
+The enhanced dynamic wedge factor (EDWF) is calculated using the method proposed by Kupermann (2005) and the Golden STT tables.
 
 Intensity and output factors are determined from reference beam data tables.
 
